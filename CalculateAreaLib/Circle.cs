@@ -1,10 +1,16 @@
 ﻿namespace CalculateAreaLib
 {
-    internal class Circle: IAreaCalculatable
+    public class Circle: IAreaCalculatable
     {
-        public double CountArea(params double[] parameters)
+        public double Radius { get; set; }
+        public Circle(double radius)
         {
-            return Math.PI * (Math.Pow(parameters[0], 2));
+            Radius = radius;
+        }
+
+        public double CountArea()
+        {
+            return Math.PI * (Math.Pow(Radius, 2));
         }
     }
 }

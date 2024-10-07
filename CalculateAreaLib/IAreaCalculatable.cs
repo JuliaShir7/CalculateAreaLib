@@ -2,6 +2,6 @@
 {
     interface IAreaCalculatable
     {
-        double CountArea(params double[] parameters);
+        double CountArea();
     }
 }
