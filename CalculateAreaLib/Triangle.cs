@@ -1,31 +1,22 @@
 ﻿namespace CalculateAreaLib
 {
-    public class Triangle:IAreaCalculatable
+    public class Triangle : IAreaCalculatable
     {
-        double[] FindPossibleLegs(params double[] parameters)
+        public double A { get; set; }
+        public double B { get; set; }
+        public double C { get; set; }
+
+        public Triangle(double a, double b, double c)
         {
-            return parameters.Where(p => p != parameters.Max()).ToArray();
+            A = a;
+            B = b;
+            C = c;
         }
-        bool IsRectangular(params double[] parameters)
+
+        public double CountArea()
         {
-            double[] probableLegs = FindPossibleLegs(parameters);
-            if (Math.Pow(parameters.Max(), 2) == (Math.Pow(probableLegs[0], 2) + Math.Pow(probableLegs[1], 2)))
-                return true;
-            else
-                return false;
-        }
-        public double CountArea(params double[] parameters)
-        {
-            if (IsRectangular(parameters))
-            {
-                var legs = FindPossibleLegs(parameters);
-                return (legs[0] * legs[1]) / 2;
-            }
-            else
-            {
-                double p = (parameters[0] + parameters[1] + parameters[2]) / 2;
-                return Math.Sqrt(p * (p - parameters[0]) * (p - parameters[1]) * (p - parameters[2]));
-            }
+            double p = (A + B + C) / 2;
+            return Math.Sqrt(p * (p - A) * (p - B) * (p - C));
         }
     }
 }
